@@ -18,8 +18,19 @@
         self.alpha = 0.5;
         self.layer.cornerRadius = self.frame.size.height/2;
         self.backgroundColor = [UIColor grayColor];
-        self.layer.borderColor = [UIColor blackColor].CGColor;
-        self.layer.borderWidth = 3.0f;
+        
+        self.numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 0, 30, 30)];
+        //[self.numberLabel setCenter:self.center];
+        self.numberLabel.textAlignment = NSTextAlignmentCenter;
+        //self.numberLabel.text = @"3";
+        [self.numberLabel setFont:[UIFont boldSystemFontOfSize:24.0]];
+        [self.numberLabel setTextColor:[UIColor whiteColor]];
+        self.numberLabel.numberOfLines = 0;
+        //[self.numberLabel sizeToFit];
+
+        [self addSubview:self.numberLabel];
+//        self.layer.borderColor = [UIColor blackColor].CGColor;
+//        self.layer.borderWidth = 3.0f;
     }
     return self;
 }

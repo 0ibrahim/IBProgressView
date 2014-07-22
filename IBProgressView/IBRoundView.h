@@ -10,4 +10,6 @@
 
 @interface IBRoundView : UIView
 
+@property (strong, nonatomic) UILabel *numberLabel;
+
 @end

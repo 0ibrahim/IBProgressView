@@ -18,7 +18,7 @@
     if (self) {
         // Initialization code
         //self.backgroundColor = [UIColor redColor];
-        [self setUpViewWithNoOfSteps:self.numOfSteps];
+        [self setUpViewWithNoOfSteps:3];
     }
     return self;
 }
@@ -29,15 +29,20 @@
 //    [self addSubview:label];
     int circleWidth = 30;
     int circleHeight = 30;
-    
-    int leftMargin = 320/2 -;
-    int topMargin = 10;
-
-    
     self.distanceBetween = 30;
-    IBRoundView *roundView = [[IBRoundView alloc] initWithFrame:CGRectMake(10, 10, 30, 30)];
-    [self addSubview:roundView];
-
+    
+    int leftMargin = 320/2 - (numOfSteps * circleWidth)/2 - ((numOfSteps -1) *self.distanceBetween)/2;
+    int topMargin = 10;
+    
+    int count = 1;
+    while (count <= numOfSteps){
+        IBRoundView *roundView = [[IBRoundView alloc] initWithFrame:CGRectMake(leftMargin, topMargin, circleWidth, circleHeight)];
+        roundView.numberLabel.text = [NSString stringWithFormat:@" %d", count];
+        [roundView.numberLabel sizeToFit];
+        leftMargin += circleWidth + self.distanceBetween;
+        [self addSubview:roundView];
+        count ++;
+    }
 }
 
 /*
