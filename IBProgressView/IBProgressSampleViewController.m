@@ -7,7 +7,8 @@
 //
 
 #import "IBProgressSampleViewController.h"
-
+#import "UIView+Glow.h"
+#import "IBProgressMainView.h"
 @interface IBProgressSampleViewController ()
 
 @end
@@ -27,6 +28,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    IBProgressMainView *maiView = [[IBProgressMainView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:maiView];
+    UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(50, 150, 200, 200)];
+    [newView setBackgroundColor:[UIColor grayColor]];
+    //[self.view addSubview:newView];
+    //[newView startGlowingWithColor:[UIColor redColor] intensity:1.0];
     
 }
 

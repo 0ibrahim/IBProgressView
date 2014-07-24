@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Handybook Inc. All rights reserved.
 //
 
+#import "UIView+Glow.h"
 #import <UIKit/UIKit.h>
 #import "IBStraightLineView.h"
 
@@ -16,5 +17,7 @@
 @property (strong, nonatomic) UIView *backgroundView;
 
 @property (strong, nonatomic) IBStraightLineView *straightLineView;
+
+@property (strong, nonatomic) NSString *orientation;
 
 @end
