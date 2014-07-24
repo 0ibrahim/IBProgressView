@@ -18,6 +18,7 @@
     if (self) {
         // Initialization code
         //self.backgroundColor = [UIColor redColor];
+        [self setFrame:CGRectMake(0, 0, 320, 100)];
         [self setUpViewWithNoOfSteps:3];
     }
     return self;
@@ -27,12 +28,13 @@
 //    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(120, 5, 80, 15)];
 //    label.text = @"View Title";
 //    [self addSubview:label];
-    int circleWidth = 30;
-    int circleHeight = 30;
-    self.distanceBetween = 30;
+    int circleWidth = 25;
+    int circleHeight = 25;
+    self.distanceBetween = 15;
     
+    NSLog(@"%@", NSStringFromCGRect(self.frame));
     int leftMargin = 320/2 - (numOfSteps * circleWidth)/2 - ((numOfSteps -1) *self.distanceBetween)/2;
-    int topMargin = 10;
+    int topMargin = 46;
     
     int count = 1;
     while (count <= numOfSteps){
