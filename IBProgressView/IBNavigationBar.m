@@ -8,6 +8,7 @@
 
 #import "IBNavigationBar.h"
 #import "IBRoundView.h"
+#import "IBStraightLineView.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation IBNavigationBar
@@ -19,7 +20,7 @@
         // Initialization code
         //self.backgroundColor = [UIColor redColor];
         [self setFrame:CGRectMake(0, 0, 320, 100)];
-        [self setUpViewWithNoOfSteps:3];
+        [self setUpViewWithNoOfSteps:4];
     }
     return self;
 }
@@ -34,15 +35,23 @@
     
     NSLog(@"%@", NSStringFromCGRect(self.frame));
     int leftMargin = 320/2 - (numOfSteps * circleWidth)/2 - ((numOfSteps -1) *self.distanceBetween)/2;
-    int topMargin = 46;
+    int topMargin = 47;
+    int topMarginForLines = 55;
     
     int count = 1;
     while (count <= numOfSteps){
         IBRoundView *roundView = [[IBRoundView alloc] initWithFrame:CGRectMake(leftMargin, topMargin, circleWidth, circleHeight)];
-        roundView.numberLabel.text = [NSString stringWithFormat:@" %d", count];
+        roundView.numberLabel.text = [NSString stringWithFormat:@"%d", count];
         [roundView.numberLabel sizeToFit];
-        leftMargin += circleWidth + self.distanceBetween;
         [self addSubview:roundView];
+        
+        if (count != numOfSteps){
+            IBStraightLineView *straightLine = [[IBStraightLineView alloc] initWithFrame:CGRectMake(leftMargin + circleWidth - 2, topMarginForLines, self.distanceBetween + 4 , 8)];
+            [self addSubview:straightLine];
+        }
+        
+        leftMargin += circleWidth + self.distanceBetween;
+        
         count ++;
     }
 }

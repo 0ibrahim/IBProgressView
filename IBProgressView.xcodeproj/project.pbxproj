@@ -24,6 +24,7 @@
 		0F70F41A197DD6690092133A /* IBProgressSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F70F419197DD6690092133A /* IBProgressSampleViewController.m */; };
 		0F70F41D197DD7400092133A /* IBProgressMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F70F41C197DD7400092133A /* IBProgressMainView.m */; };
 		0F70F420197DDAC10092133A /* IBNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F70F41F197DDAC10092133A /* IBNavigationBar.m */; };
+		0F8C15CC198157870077682C /* IBStraightLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C15CB198157870077682C /* IBStraightLineView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		0F70F41C197DD7400092133A /* IBProgressMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBProgressMainView.m; sourceTree = "<group>"; };
 		0F70F41E197DDAC10092133A /* IBNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBNavigationBar.h; sourceTree = "<group>"; };
 		0F70F41F197DDAC10092133A /* IBNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBNavigationBar.m; sourceTree = "<group>"; };
+		0F8C15CA198157870077682C /* IBStraightLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBStraightLineView.h; sourceTree = "<group>"; };
+		0F8C15CB198157870077682C /* IBStraightLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBStraightLineView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				0F70F419197DD6690092133A /* IBProgressSampleViewController.m */,
 				0F70F41E197DDAC10092133A /* IBNavigationBar.h */,
 				0F70F41F197DDAC10092133A /* IBNavigationBar.m */,
+				0F8C15CA198157870077682C /* IBStraightLineView.h */,
+				0F8C15CB198157870077682C /* IBStraightLineView.m */,
 				0F1D3F37197DE9ED00533718 /* IBRoundView.h */,
 				0F1D3F38197DE9ED00533718 /* IBRoundView.m */,
 				0F70F3FB197DD5DA0092133A /* Images.xcassets */,
@@ -268,6 +273,7 @@
 				0F70F3F6197DD5DA0092133A /* main.m in Sources */,
 				0F70F3FA197DD5DA0092133A /* IBAppDelegate.m in Sources */,
 				0F70F41A197DD6690092133A /* IBProgressSampleViewController.m in Sources */,
+				0F8C15CC198157870077682C /* IBStraightLineView.m in Sources */,
 				0F1D3F39197DE9ED00533718 /* IBRoundView.m in Sources */,
 				0F70F41D197DD7400092133A /* IBProgressMainView.m in Sources */,
 			);
