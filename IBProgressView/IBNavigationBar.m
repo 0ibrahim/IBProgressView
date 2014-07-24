@@ -60,7 +60,7 @@
         }
         [self addSubview:roundView];
         [self bringSubviewToFront:roundView];
-        //[roundView startGlowingWithColor:[UIColor redColor] intensity: 1.0];
+        //[roundView startGlowingWithColor:[UIColor greenColor] intensity: 1.0];
 
         leftMargin += circleWidth + self.distanceBetween;
         
