@@ -17,8 +17,16 @@
         // Initialization code
         self.alpha = 1;
         self.layer.cornerRadius = self.frame.size.height/2;
+        self.clipsToBounds = YES;
+        self.backgroundColor = [UIColor grayColor];
+        //NSLog(NSStringFromCGRect(self.frame));
+        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, self.frame.size.height)];
+        self.backgroundView.backgroundColor = [UIColor greenColor];
         self.backgroundColor = [UIColor grayColor];
         
+        //NSLog(NSStringFromCGRect(self.backgroundView.frame));
+        
+        [self addSubview:self.backgroundView];
         
         self.numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(7, 0, 30, 30)];
         //[self.numberLabel setCenter:self.center];
@@ -30,10 +38,18 @@
         //[self.numberLabel sizeToFit];
 
         [self addSubview:self.numberLabel];
-//        self.layer.borderColor = [UIColor blackColor].CGColor;
-//        self.layer.borderWidth = 3.0f;
+        
+        [self changeBackgroundColor:[UIColor greenColor]];
     }
     return self;
+}
+
+- (void)changeBackgroundColor: (UIColor*)color {
+    [UIView animateWithDuration:1.5 animations:^{
+        self.backgroundView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    } completion:^(BOOL finished) {
+        [self.straightLineView changeBackground: color];
+    }];
 }
 
 

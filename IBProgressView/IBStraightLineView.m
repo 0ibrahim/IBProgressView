@@ -15,10 +15,19 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = [UIColor redColor];
         self.alpha = 1;
+        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, self.frame.size.height)];
+        [self addSubview:self.backgroundView];
     }
     return self;
+}
+
+- (void)changeBackground:(UIColor *)color {
+    self.backgroundView.backgroundColor = color;
+    [UIView animateWithDuration:1.5 animations:^{
+        self.backgroundView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    }];
 }
 
 /*

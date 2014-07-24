@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IBStraightLineView.h"
 
 @interface IBRoundView : UIView
 
 @property (strong, nonatomic) UILabel *numberLabel;
+
+@property (strong, nonatomic) UIView *backgroundView;
+
+@property (strong, nonatomic) IBStraightLineView *straightLineView;
 
 @end

@@ -10,4 +10,8 @@
 
 @interface IBStraightLineView : UIView
 
+@property (strong, nonatomic) UIView *backgroundView;
+
+- (void)changeBackground: (UIColor *)color;
+
 @end

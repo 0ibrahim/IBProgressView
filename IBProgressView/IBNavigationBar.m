@@ -43,18 +43,24 @@
         IBRoundView *roundView = [[IBRoundView alloc] initWithFrame:CGRectMake(leftMargin, topMargin, circleWidth, circleHeight)];
         roundView.numberLabel.text = [NSString stringWithFormat:@"%d", count];
         [roundView.numberLabel sizeToFit];
-        [self addSubview:roundView];
         
         if (count != numOfSteps){
             IBStraightLineView *straightLine = [[IBStraightLineView alloc] initWithFrame:CGRectMake(leftMargin + circleWidth - 2, topMarginForLines, self.distanceBetween + 4 , 8)];
+            roundView.straightLineView = straightLine;
             [self addSubview:straightLine];
         }
+        [self addSubview:roundView];
         
+
+        
+        [self bringSubviewToFront:roundView];
         leftMargin += circleWidth + self.distanceBetween;
         
         count ++;
     }
 }
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
