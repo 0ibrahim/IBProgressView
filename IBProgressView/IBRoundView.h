@@ -20,4 +20,8 @@
 
 @property (strong, nonatomic) NSString *orientation;
 
+@property (nonatomic) BOOL completed;
+
+- (void)changeBackgroundColor: (UIColor*)color;
+
 @end

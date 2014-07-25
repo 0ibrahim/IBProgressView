@@ -50,8 +50,8 @@
     UIBezierPath *beizerpath = [UIBezierPath bezierPath];
     [beizerpath moveToPoint:CGPointMake(0, 0)];
     [beizerpath addLineToPoint:CGPointMake(18, 0)];
-    [beizerpath moveToPoint:CGPointMake(0, 6)];
-    [beizerpath addLineToPoint:CGPointMake(18, 6)];
+    [beizerpath moveToPoint:CGPointMake(0, 5)];
+    [beizerpath addLineToPoint:CGPointMake(18, 5)];
     [beizerpath closePath];
     [[UIColor lightGrayColor] setStroke];
     //[[UIColor redColor] setFill];
@@ -61,7 +61,8 @@
     //CGContextSetStrokeColorWithColor(aRef, [[UIColor colorWithWhite:.4 alpha:.6] CGColor]);
     CGContextSetFillColorWithColor(aRef, [UIColor colorWithWhite:.4 alpha:0.6].CGColor);
     CGContextFillPath(aRef);
-    CGContextSetShadowWithColor(aRef, CGSizeMake(0, 2), 3.0, [[UIColor darkGrayColor]CGColor]);
+    CGContextSetShadowWithColor(aRef, CGSizeMake(0, 2), 2.0, [[UIColor darkGrayColor]CGColor]);
+    //CGContextSetShadowWithColor(aRef, CGSizeMake(-1, -1), 3.0, [[UIColor darkGrayColor]CGColor]);
     CGContextDrawPath(aRef, kCGPathFill);
     
     // If you have content to draw after the shape,
@@ -79,6 +80,7 @@
     // color does not obscure the stroked line.
     //[beizerpath fill];
     [beizerpath stroke];
+    //[beizerpath stroke];
 }
 
 

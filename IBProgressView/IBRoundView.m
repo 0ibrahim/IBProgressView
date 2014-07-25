@@ -19,6 +19,7 @@
         // Initialization code
         //self.alpha = 1;
         self.layer.cornerRadius = self.frame.size.height/2;
+        self.completed = NO;
         self.clipsToBounds = YES;
         self.backgroundColor = [UIColor lightGrayColor];
         //NSLog(NSStringFromCGRect(self.frame));
@@ -32,7 +33,7 @@
         
         [self addSubview:self.backgroundView];
         
-        self.numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 3, 30, 30)];
+        self.numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         //[self.numberLabel setCenter:self.center];
         self.numberLabel.textAlignment = NSTextAlignmentCenter;
         //self.numberLabel.text = @"3";
@@ -54,11 +55,17 @@
 }
 
 - (void)changeBackgroundColor: (UIColor*)color {
-    [UIView animateWithDuration:1.5 animations:^{
-        self.backgroundView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    [UIView animateWithDuration:.5 animations:^{
+        self.completed = YES;
+        self.numberLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"✓"] attributes:@{@"NSTextEffectAttributeName": @"NSTextEffectLetterPressStyle"}];
     } completion:^(BOOL finished) {
         [self.straightLineView changeBackground: color];
     }];
+}
+
+- (void)setCompleted:(BOOL)completed{
+    _completed = completed;
+    [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -66,27 +73,31 @@
     //[super drawRect:rect];
     NSLog(@"%@", NSStringFromCGRect(self.frame));
     UIBezierPath *beizerpath;
+    UIBezierPath *beizerPath2 = nil;
     if ([self.orientation isEqualToString:@"right"]){
         beizerpath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(12.5, 12.5) radius:self.frame.size.width/2 startAngle:DEGREES_TO_RADIANS(17) endAngle:DEGREES_TO_RADIANS(357) clockwise:YES];
     }else if ([self.orientation isEqualToString:@"both"]){
-        beizerpath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(12.5, 12.5) radius:self.frame.size.width/2 startAngle:DEGREES_TO_RADIANS(17) endAngle:DEGREES_TO_RADIANS(357) clockwise:YES];
+        beizerpath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(12.5, 12.5) radius:self.frame.size.width/2 startAngle:DEGREES_TO_RADIANS(185) endAngle:DEGREES_TO_RADIANS(357) clockwise:YES];
+        beizerPath2 = [UIBezierPath bezierPathWithArcCenter:CGPointMake(12.5, 12.5) radius:self.frame.size.width/2 startAngle:DEGREES_TO_RADIANS(17) endAngle:DEGREES_TO_RADIANS(165) clockwise:YES];
     }else {
-        beizerpath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(12.5, 12.5) radius:self.frame.size.width/2 startAngle:DEGREES_TO_RADIANS(185) endAngle:DEGREES_TO_RADIANS(520) clockwise:YES];
+        beizerpath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(12.5, 12.5) radius:self.frame.size.width/2 startAngle:DEGREES_TO_RADIANS(185) endAngle:DEGREES_TO_RADIANS(525) clockwise:YES];
     }
     
-    [[UIColor lightGrayColor] setStroke];
-    //[[UIColor redColor] setFill];
-    
+    UIColor *color;
     CGContextRef aRef = UIGraphicsGetCurrentContext();
+    if (self.completed){
+        color = [UIColor greenColor];
+    }else {
+        color = [UIColor grayColor];
+    }
     
-    CGContextSetStrokeColorWithColor(aRef, [[UIColor colorWithWhite:.4 alpha:.6] CGColor]);
-    //CGContextSetFillColorWithColor(aRef, [UIColor colorWithWhite:.8 alpha:0.2].CGColor);
     CGContextFillPath(aRef);
-    CGContextSetShadowWithColor(aRef, CGSizeMake(0, 1), 3.0, [[UIColor darkGrayColor]CGColor]);
-    CGContextSetShadowWithColor(aRef, CGSizeMake(1, 0), 3.0, [[UIColor darkGrayColor]CGColor]);
-    CGContextSetShadowWithColor(aRef, CGSizeMake(1, 1), 3.0, [[UIColor darkGrayColor]CGColor]);
-    CGContextSetShadowWithColor(aRef, CGSizeMake(1, 1), 3.0, [[UIColor darkGrayColor]CGColor]);
-    CGContextSetShadowWithColor(aRef, CGSizeMake(0, 1), 3.0, [[UIColor darkGrayColor]CGColor]);
+    CGContextSetStrokeColorWithColor(aRef, [[UIColor colorWithWhite:.4 alpha:.6] CGColor]);
+    CGContextSetShadowWithColor(aRef, CGSizeMake(0, 1), 3.0, [color CGColor]);
+    CGContextSetShadowWithColor(aRef, CGSizeMake(1, 0), 3.0, [color CGColor]);
+    CGContextSetShadowWithColor(aRef, CGSizeMake(1, 1), 3.0, [color CGColor]);
+    CGContextSetShadowWithColor(aRef, CGSizeMake(1, 1), 3.0, [color CGColor]);
+    CGContextSetShadowWithColor(aRef, CGSizeMake(0, 1), 3.0, [color CGColor]);
     CGContextDrawPath(aRef, kCGPathFill);
     
     // If you have content to draw after the shape,
@@ -99,6 +110,11 @@
     
     // Adjust the drawing options as needed.
     beizerpath.lineWidth = 3;
+    if (beizerPath2){
+        beizerPath2.lineWidth = 3;
+        [beizerPath2 stroke];
+        [beizerPath2 stroke];
+    }
     
     // Fill the path before stroking it so that the fill
     // color does not obscure the stroked line.

@@ -10,6 +10,7 @@
 #import "IBRoundView.h"
 #import "IBStraightLineView.h"
 #import <QuartzCore/QuartzCore.h>
+#import <CoreText/CoreText.h>
 
 @implementation IBNavigationBar
 
@@ -20,10 +21,22 @@
         // Initialization code
         //self.backgroundColor = [UIColor redColor];
         [self setFrame:CGRectMake(0, 0, 320, 200)];
+        self.queue = [[NSMutableArray alloc] init];
         [self setUpViewWithNoOfSteps:4];
+        self.numOfStepsCompleted = 2;
         self.backgroundColor = [UIColor darkGrayColor];
     }
     return self;
+}
+- (void)setNumOfStepsCompleted:(int)numOfStepsCompleted{
+    [self upDateNumberOfSteps];
+    _numOfStepsCompleted = numOfStepsCompleted;
+}
+
+- (void)upDateNumberOfSteps {
+    for (IBRoundView *roundView in self.queue){
+        [roundView changeBackgroundColor:[UIColor greenColor]];
+    }
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
@@ -43,8 +56,8 @@
     
     NSLog(@"%@", NSStringFromCGRect(self.frame));
     int leftMargin = 320/2 - (numOfSteps * circleWidth)/2 - ((numOfSteps -1) *self.distanceBetween)/2;
-    int topMargin = 15;
-    int topMarginForLines = 24;
+    int topMargin = 50;
+    int topMarginForLines = 59;
     
     int count = 1;
     while (count <= numOfSteps){
@@ -56,17 +69,21 @@
         }else {
             roundView.orientation = @"both";
         }
+        
+        
         roundView.numberLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d", count] attributes:@{@"NSTextEffectAttributeName": @"NSTextEffectLetterPressStyle"}];
         roundView.numberLabel.textColor = [UIColor darkGrayColor];
-        [roundView.numberLabel sizeToFit];
+        //[roundView.numberLabel sizeToFit];
         
         if (count != numOfSteps){
             IBStraightLineView *straightLine = [[IBStraightLineView alloc] initWithFrame:CGRectMake(leftMargin + circleWidth - 2, topMarginForLines, self.distanceBetween + 4 , 8)];
             roundView.straightLineView = straightLine;
             [self addSubview:straightLine];
         }
+        [self.queue addObject:roundView];
         [self addSubview:roundView];
         [self bringSubviewToFront:roundView];
+        
         //[roundView startGlowingWithColor:[UIColor greenColor] intensity: 1.0];
 
         leftMargin += circleWidth + self.distanceBetween;

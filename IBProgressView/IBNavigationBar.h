@@ -13,5 +13,9 @@
 @property int leftMargin;
 @property int distanceBetween;
 @property int numOfSteps;
+@property (nonatomic)int numOfStepsCompleted;
+@property (strong, nonatomic) NSMutableArray *queue;
+
+- (void)setCompletedSteps: (int)num;
 
 @end
