@@ -49,6 +49,13 @@
     int count = 1;
     while (count <= numOfSteps){
         IBRoundView *roundView = [[IBRoundView alloc] initWithFrame:CGRectMake(leftMargin, topMargin, circleWidth, circleHeight)];
+        if (count == 1){
+            roundView.orientation = @"right";
+        }else if (count == numOfSteps) {
+            roundView.orientation = @"left";
+        }else {
+            roundView.orientation = @"both";
+        }
         roundView.numberLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d", count] attributes:@{@"NSTextEffectAttributeName": @"NSTextEffectLetterPressStyle"}];
         roundView.numberLabel.textColor = [UIColor darkGrayColor];
         [roundView.numberLabel sizeToFit];

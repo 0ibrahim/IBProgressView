@@ -63,13 +63,15 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    [super drawRect:rect];
+    //[super drawRect:rect];
     NSLog(@"%@", NSStringFromCGRect(self.frame));
     UIBezierPath *beizerpath;
     if ([self.orientation isEqualToString:@"right"]){
-            [UIBezierPath bezierPathWithArcCenter:CGPointMake(12.5, 12.5) radius:self.frame.size.width/2 startAngle:DEGREES_TO_RADIANS(17) endAngle:DEGREES_TO_RADIANS(357) clockwise:YES];
+        beizerpath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(12.5, 12.5) radius:self.frame.size.width/2 startAngle:DEGREES_TO_RADIANS(17) endAngle:DEGREES_TO_RADIANS(357) clockwise:YES];
     }else if ([self.orientation isEqualToString:@"both"]){
-    
+        beizerpath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(12.5, 12.5) radius:self.frame.size.width/2 startAngle:DEGREES_TO_RADIANS(17) endAngle:DEGREES_TO_RADIANS(357) clockwise:YES];
+    }else {
+        beizerpath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(12.5, 12.5) radius:self.frame.size.width/2 startAngle:DEGREES_TO_RADIANS(185) endAngle:DEGREES_TO_RADIANS(520) clockwise:YES];
     }
     
     [[UIColor lightGrayColor] setStroke];
@@ -101,6 +103,7 @@
     // Fill the path before stroking it so that the fill
     // color does not obscure the stroked line.
     //[beizerpath fill];
+    [beizerpath stroke];
     [beizerpath stroke];
     
 }
